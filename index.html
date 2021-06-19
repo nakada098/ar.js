@@ -18,6 +18,7 @@
                 gps-entity-place="latitude: 35.659522; longitude: 139.700682"
                 animation-mixer
             >
+            </a-entity>
             <a-entity
                 gltf-model="https://arjs-cors-proxy.herokuapp.com/https://ar.summer-hamburger.tokyo/boxlogo-move.gltf"
                 scale="1 1 1"
@@ -25,6 +26,13 @@
                 gps-entity-place="latitude: 35.650495; longitude: 139.626381"
                 animation-mixer
             >
+            </a-entity>
+            <a-box
+                gps-projected-entity-place='latitude: 35.650495; longitude: 139.626381'
+                material='color: red'
+                scale='1 1 1'
+            >
+            </a-box>
             <a-camera gps-camera="maxDistance: 100; gpsTimeInterval: 0" rotation-reader></a-camera>
         </a-scene>
     </body>
