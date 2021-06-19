@@ -15,69 +15,14 @@
             embedded
             arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
         >
-            <a-nft
-                type="nft"
-                url="https://mgtt.jp/space-shark/space-shark"
-                smooth="true"
-                smoothCount="10"
-                smoothTolerance=".01"
-                smoothThreshold="5"
-            >
-                <a-entity
-                    gltf-model="https://arjs-cors-proxy.herokuapp.com/https://mgtt.jp/boxlogo-move.gltf"
-                    scale="10 10 10"
-                    position="25 0 -100"
-                    animation-mixer
-                ></a-entity>
-            </a-nft>
-
-            <a-nft
-                type="nft"
-                url="https://mgtt.jp/get-coke-joe/get-coke-joe"
-                smooth="true"
-                smoothCount="10"
-                smoothTolerance=".01"
-                smoothThreshold="5"
-            >
-                <a-entity
-                    gltf-model="https://arjs-cors-proxy.herokuapp.com/https://mgtt.jp/boxlogo-move.gltf"
-                    scale="10 10 10"
-                    position="25 0 -100"
-                    animation-mixer
-                ></a-entity>
-            </a-nft>
-
-            <a-nft
-                type="nft"
-                url="https://mgtt.jp/represent/represent"
-                smooth="true"
-                smoothCount="10"
-                smoothTolerance=".01"
-                smoothThreshold="5"
-            >
-                <a-entity
-                    gltf-model="https://arjs-cors-proxy.herokuapp.com/https://mgtt.jp/boxlogo-move.gltf"
-                    scale="10 10 10"
-                    position="25 0 -100"
-                    animation-mixer
-                ></a-entity>
-            </a-nft>
-            <a-entity camera></a-entity>
-
             <a-entity
                 gltf-model="https://arjs-cors-proxy.herokuapp.com/https://mgtt.jp/boxlogo-move.gltf"
-                position="0 300 0"
+                position="0 1000 0"
                 scale="100 100 100"
                 gps-entity-place="latitude: 35.65049319322186; longitude: 139.62638319478305;"
                 animation-mixer
             ></a-entity>
-
-            <a-box
-                material="color: red"
-                gps-entity-place="latitude: 35.65049319322186; longitude: 139.62638319478305;"
-                scale="30 30 30"
-            ></a-box>
-            <a-camera gps-camera rotation-reader> </a-camera>
+            <a-camera gps-camera rotation-reader></a-camera>
         </a-scene>
     </body>
 </html>
