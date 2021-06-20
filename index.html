@@ -53,26 +53,27 @@
             <a-camera gps-camera="minDistance:0; maxDistance:100" rotation-reader> </a-camera>
         </a-scene>
         <script>
-        window.addEventListener('load', function () {
-            const el = document.querySelector('[gps-entity-place]');
-            const distanceMsg = document.getElementById('distance');
-            el.addEventListener('gps-entity-place-update-positon', (event) => {
-                console.log("gps-entity-place-update-positon")
-                console.log("event: "+event)
-                distanceMsg.textContent = `あと${event.detail.distance}m`;
-                if(event.detail.distance <= 50) {
-                    // 50m以下で近づくほど明るくする、メッセージ非表示、距離表示
-                    directionLight.setAttribute('intensity',1 - event.detail.distance / 50);
-                    ambientLight.setAttribute('intensity',1 - event.detail.distance / 50);
-                    distanceMsg.style.display = 'block';
-                } else {
-                    // 50mより離れると、明るさ0、メッセージ非表示、距離表示
-                    directionLight.setAttribute('intensity',0);
-                    ambientLight.setAttribute('intensity',0);
-                    distanceMsg.style.display = 'block';
-                }
+            window.addEventListener('load', function () {
+                console.log("load")
+                const el = document.querySelector('[gps-entity-place]');
+                const distanceMsg = document.getElementById('distance');
+                el.addEventListener('gps-entity-place-update-positon', (event) => {
+                    console.log("gps-entity-place-update-positon")
+                    console.log("event: "+event)
+                    distanceMsg.textContent = `あと${event.detail.distance}m`;
+                    if(event.detail.distance <= 50) {
+                        // 50m以下で近づくほど明るくする、メッセージ非表示、距離表示
+                        directionLight.setAttribute('intensity',1 - event.detail.distance / 50);
+                        ambientLight.setAttribute('intensity',1 - event.detail.distance / 50);
+                        distanceMsg.style.display = 'block';
+                    } else {
+                        // 50mより離れると、明るさ0、メッセージ非表示、距離表示
+                        directionLight.setAttribute('intensity',0);
+                        ambientLight.setAttribute('intensity',0);
+                        distanceMsg.style.display = 'block';
+                    }
+                });
             });
-        });
         </script>
     </body>
 </html>
