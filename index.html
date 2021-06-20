@@ -55,6 +55,7 @@
         <script>
             window.addEventListener('load', function () {
                 console.log("load")
+                console.log(document.querySelector('[gps-entity-place]').getAttribute('distanceMsg'));
                 const el = document.querySelector('[gps-entity-place]');
                 const distanceMsg = document.getElementById('distance');
                 el.addEventListener('gps-entity-place-update-positon', (event) => {
