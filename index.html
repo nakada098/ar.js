@@ -58,8 +58,8 @@
                 console.log(document.querySelector('[gps-entity-place]').getAttribute('distanceMsg'));
                 const el = document.querySelector('[gps-entity-place]');
                 const distanceMsg = document.getElementById('distance');
-                el.addEventListener('gps-entity-place-update-positon', (event) => {
-                    console.log("gps-entity-place-update-positon")
+                el.addEventListener('gps-camera-update-position', (event) => {
+                    console.log("gps-camera-update-position")
                     console.log("event: "+event)
                     distanceMsg.textContent = `あと${event.detail.distance}m`;
                     if(event.detail.distance <= 50) {

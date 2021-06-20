@@ -39,7 +39,7 @@
                 console.log("distanceMsg: "+distanceMsg);
 
                 const el = document.querySelector('[gps-entity-place]');
-                el.addEventListener('gps-entity-place-update-positon', (event) => {
+                el.addEventListener('gps-entity-place-update-position', (event) => {
                     if(event.detail.distance < 100) {
                         el.setAttribute('material','color: yellow');
                     } else {
