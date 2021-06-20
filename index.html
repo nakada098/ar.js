@@ -5,39 +5,72 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>SUMMER HAMBURGER</title>
         <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+        <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
         <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+        <style>
+            body {
+                font-family: sans-serif;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            #distance {
+                position: fixed;
+                z-index: 10000;
+                background-color: rgba(0,0,0,.8);
+                color: #fff;
+                text-align: center;
+                padding: 10px;
+                top: 10px;
+                left: 5%;
+                width: 90%;
+                display: block;
+            }
+            body {
+                margin: 0;
+            }
+        </style>
     </head>
-    <body>
+    <body style="margin: 0; overflow: hidden;">
+        <div id="distance"></div>
         <a-scene
             vr-mode-ui="enabled: false"
             embedded
             arjs='sourceType: webcam; debugUIEnabled: false;'
         >
-            <!-- <a-entity
-                gltf-model="https://arjs-cors-proxy.herokuapp.com/https://ar.summer-hamburger.tokyo/boxlogo-move.gltf"
-                scale="1000 1000 1000"
-                position="0 5000 0"
-                gps-entity-place="latitude: 35.659522; longitude: 139.700682"
-                animation-mixer
-            > -->
-            <!-- <a-entity
-                gltf-model="https://arjs-cors-proxy.herokuapp.com/https://ar.summer-hamburger.tokyo/boxlogo-move.gltf"
-                scale="100 100 100"
-                position="0 1000 0"
-                gps-entity-place="latitude: 35.65096380457885; longitude: 139.62655553954056"
-                animation-mixer
-            > -->
+            <a-assets>
+                <a-asset-items id="logo" src="/boxlogo-move.gltf" ></a-asset-items>
+            </a-assets>
             <a-entity
-                gltf-model="https://arjs-cors-proxy.herokuapp.com/https://ar.summer-hamburger.tokyo/boxlogo-move.gltf"
-                scale="100 100 100"
-                position="0 1000 0"
-                gps-entity-place="latitude: 35.65096380457885; longitude: 139.62655553954056"
+                gps-entity-place="latitude: 35.650416; longitude: 139.626829;"
+                gltf-model="#logo"
+                scale="10 10 10"
+                rotation="0 0 0"
+                pisition="0 10 0"
                 animation-mixer
-            >
-            </a-entity>
+            ></a-entity>
             <a-camera gps-camera="maxDistance: 1000; gpsTimeInterval: 0" rotation-reader></a-camera>
         </a-scene>
+        <script>
+        window.addEventListener('load', function () {
+            const el = document.querySelector('[gps-entity-place]');
+            const distanceMsg = document.getElementById('distance');
+            el.addEventListener('gps-entity-place-update-positon', (event) => {
+                distanceMsg.textContent = `あと${event.detail.distance}m`;
+                if(event.detail.distance <= 50) {
+                    // 50m以下で近づくほど明るくする、メッセージ非表示、距離表示
+                    directionLight.setAttribute('intensity',1 - event.detail.distance / 50);
+                    ambientLight.setAttribute('intensity',1 - event.detail.distance / 50);
+                    distanceMsg.style.display = 'block';
+                } else {
+                    // 50mより離れると、明るさ0、メッセージ非表示、距離表示
+                    directionLight.setAttribute('intensity',0);
+                    ambientLight.setAttribute('intensity',0);
+                    distanceMsg.style.display = 'block';
+                }
+            });
+        });
+        </script>
     </body>
 </html>
