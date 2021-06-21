@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>SUMMER HAMBURGER</title>
         <link rel="icon" href="/favicon.ico" type="image/vnd.microsoft.icon">
@@ -9,73 +9,32 @@
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
         <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
         <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-        <style>
-            body {
-                font-family: sans-serif;
-            }
-            * {
-                box-sizing: border-box;
-            }
-            #distance {
-                position: fixed;
-                z-index: 10000;
-                background-color: rgba(0,0,0,.8);
-                color: #fff;
-                text-align: center;
-                padding: 10px;
-                top: 10px;
-                left: 5%;
-                width: 90%;
-                display: block;
-            }
-            body {
-                margin: 0;
-            }
-        </style>
     </head>
+
     <body style="margin: 0; overflow: hidden;">
-        <div id="distance"></div>
         <a-scene
             vr-mode-ui="enabled: false"
             embedded
-            arjs='sourceType: webcam; debugUIEnabled: false;'
+            arjs="sourceType: webcam; debugUIEnabled: false;"
         >
             <a-assets>
                 <a-asset-items id="logo" src="/boxlogo-move.gltf" ></a-asset-items>
             </a-assets>
             <a-entity
-                gps-entity-place="latitude: 35.650416; longitude: 139.626829;"
+                gps-entity-place="latitude: 35.65334055018165; longitude: 139.62756996685965;"
                 gltf-model="#logo"
                 scale="10 10 10"
-                rotation="0 0 0"
-                pisition="0 10 0"
+                position="0 100 0"
                 animation-mixer
             ></a-entity>
-            <a-camera gps-camera="minDistance:0; maxDistance:100" rotation-reader> </a-camera>
+            <a-entity
+                gps-entity-place="latitude: 35.69352664950944; longitude: 139.77678239280937;"
+                gltf-model="#logo"
+                scale="10 10 10"
+                position="0 100 0"
+                animation-mixer
+            ></a-entity>
+            <a-camera gps-camera rotation-reader> </a-camera>
         </a-scene>
-        <script>
-            window.addEventListener('load', function () {
-                console.log("load")
-                console.log(document.querySelector('[gps-entity-place]').getAttribute('distanceMsg'));
-                const el = document.querySelector('[gps-entity-place]');
-                const distanceMsg = document.getElementById('distance');
-                el.addEventListener('gps-camera-update-position', (event) => {
-                    console.log("gps-camera-update-position")
-                    console.log("event: "+event)
-                    distanceMsg.textContent = `あと${event.detail.distance}m`;
-                    if(event.detail.distance <= 50) {
-                        // 50m以下で近づくほど明るくする、メッセージ非表示、距離表示
-                        directionLight.setAttribute('intensity',1 - event.detail.distance / 50);
-                        ambientLight.setAttribute('intensity',1 - event.detail.distance / 50);
-                        distanceMsg.style.display = 'block';
-                    } else {
-                        // 50mより離れると、明るさ0、メッセージ非表示、距離表示
-                        directionLight.setAttribute('intensity',0);
-                        ambientLight.setAttribute('intensity',0);
-                        distanceMsg.style.display = 'block';
-                    }
-                });
-            });
-        </script>
     </body>
 </html>
