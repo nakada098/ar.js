@@ -7,6 +7,7 @@
         <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
         <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
         <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+        <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
     </head>
 
     <body style="margin: 0; overflow: hidden;">
@@ -15,19 +16,17 @@
             embedded
             arjs="sourceType: webcam; debugUIEnabled: false;"
         >
-            <a-box
-                material="color: red"
+            <a-assets>
+                <a-asset-items id="logo" src="/boxlogo-move.gltf" ></a-asset-items>
+            </a-assets>
+            <a-entity
                 gps-entity-place="latitude: 35.65346104867304; longitude: 139.6274708049212;"
+                gltf-model="#logo"
+                rotation="0 0 0"
                 scale="10 10 10"
                 position="0 100 0"
-            ></a-box>
-            <!-- <a-text
-                value="This content will always face you."
-                look-at="[gps-camera]"
-                scale="120 120 120"
-                position="0 100 0"
-                gps-entity-place="latitude: 35.649518016859304; longitude: 139.6300994103006;"
-            ></a-text> -->
+                animation-mixer
+            ></a-entity>
             <a-camera gps-camera rotation-reader> </a-camera>
         </a-scene>
     </body>
