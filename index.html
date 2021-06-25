@@ -28,14 +28,6 @@
                 position="0 100 0"
                 animation-mixer
             ></a-entity>
-
-            <a-entity
-                gps-entity-place="latitude: 35.6516089170493; longitude: 139.62685785195745;"
-                gltf-model="https://ar.summer-hamburger/boxlogo_kabuki.gltf"
-                scale="10 10 10"
-                position="0 100 0"
-            ></a-entity>
-
             <a-entity
                 gps-entity-place="latitude: 35.65049921096149; longitude: 139.6264462285193;"
                 gltf-model="#kabuki"
@@ -51,6 +43,23 @@
                 animation-mixer
             ></a-entity>
             <a-camera gps-camera rotation-reader> </a-camera>
+
+            <a-nft
+                type='nft'
+                url='https://arjs-cors-proxy.herokuapp.com/https://ar.summer-hamburger.tokyo/space-shark/space-shark'
+                smooth='true'
+                smoothCount='10'
+                smoothTolerance='0.01'
+                smoothThreshold='5'
+            >
+                <a-entity
+                    gltf-model='https://arjs-cors-proxy.herokuapp.com/https://ar.summer-hamburger.tokyo/boxlogo_kabuki.gltf'
+                    scale="50 50 50"
+                    position="50 150 -100"
+                >
+                </a-entity>
+            </a-nft>
+            <a-entity camera></a-entity>
         </a-scene>
     </body>
 </html>
