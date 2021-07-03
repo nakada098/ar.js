@@ -19,6 +19,7 @@
         >
             <a-assets>
                 <a-asset-items id="box" src="/box.gltf" ></a-asset-items>
+                <a-asset-items id="dragon" src="/dragon.gltf" ></a-asset-items>
                 <a-asset-items id="move" src="/boxlogo-move.gltf" ></a-asset-items>
                 <a-asset-items id="kabuki" src="/boxlogo_kabuki.gltf" ></a-asset-items>
             </a-assets>
@@ -32,6 +33,13 @@
             <a-entity
                 gps-entity-place="latitude: 35.62897783238434; longitude: 139.6719312874202;"
                 gltf-model="#kabuki"
+                scale="10 10 10"
+                position="0 100 0"
+                animation-mixer
+            ></a-entity>
+            <a-entity
+                gps-entity-place="latitude: 35.62897783238434; longitude: 139.6719312874202;"
+                gltf-model="#dragon"
                 scale="10 10 10"
                 position="0 100 0"
                 animation-mixer
